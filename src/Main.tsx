@@ -1,19 +1,23 @@
 import React, { Component } from "react";
-import { View, Text, StyleSheet, TextInput } from "react-native";
+import { View, Text, StyleSheet, TextInput, SafeAreaView, FlatList } from "react-native";
 import { Ionicons } from "@expo/vector-icons";
 import * as Animatable from "react-native-animatable";
+
+import { listItems } from "./data";
 
 class Main extends Component {
   render() {
     return (
-      <View style={styles.root}>
+      <SafeAreaView style={styles.root}>
         <View style={styles.headerContainer}>
           <Animatable.View animation="slideInRight" style={styles.header}>
-            <Ionicons name="ios-search" size={24} />
+            <Ionicons name="ios-search" duration={500} size={24} />
             <TextInput placeholder="Search" style={styles.input} />
           </Animatable.View>
         </View>
-      </View>
+
+        <FlatList data={listItems} renderItem={({ item }) => <Text>{item}</Text>} />
+      </SafeAreaView>
     );
   }
 }
