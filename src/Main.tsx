@@ -1,15 +1,17 @@
 import React, { Component } from "react";
 import { View, Text, StyleSheet, TextInput } from "react-native";
 import { Ionicons } from "@expo/vector-icons";
+import * as Animatable from "react-native-animatable";
 
 class Main extends Component {
   render() {
     return (
       <View style={styles.root}>
         <View style={styles.headerContainer}>
-          <View style={styles.header}>
-            <Ionicons name="ios-search" />
-          </View>
+          <Animatable.View animation="slideInRight" style={styles.header}>
+            <Ionicons name="ios-search" size={24} />
+            <TextInput placeholder="Search" style={styles.input} />
+          </Animatable.View>
         </View>
       </View>
     );
@@ -28,7 +30,14 @@ const styles = StyleSheet.create({
   },
   header: {
     height: 50,
-    backgroundColor: "white"
+    backgroundColor: "white",
+    flexDirection: "row",
+    padding: 5,
+    alignItems: "center"
+  },
+  input: {
+    fontSize: 24,
+    marginLeft: 15
   }
 });
 
